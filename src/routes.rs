@@ -23,7 +23,6 @@ pub async fn shorten_url(client: web::Data<Arc<Client>>, data: web::Json<UrlData
             HttpResponse::Ok().json(ShortUrlResponse { short_url: existing_short_url })
         },
         Ok(None) => {
-            // Use current UNIX timestamp as a salt
             let salt = SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_secs().to_string();
             let short_url = utils::generate_short_url(&data.long_url, &salt);
 

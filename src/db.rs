@@ -2,7 +2,6 @@ use tokio_postgres::{Client, NoTls, Error};
 
 
 pub async fn establish_connection() -> Result<Client, Error> {
-    // Replace "localhost" with "db", which is the service name in docker-compose.yml
     let (client, connection) = tokio_postgres::connect("host=db user=user password=password dbname=mydatabase", NoTls).await?;
 
     tokio::spawn(async move {

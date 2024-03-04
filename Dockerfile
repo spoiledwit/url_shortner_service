@@ -29,4 +29,4 @@ RUN cargo build --release
 FROM debian:bullseye
 COPY --from=builder /url_shortner/target/release/url_shortner /usr/local/bin/url_shortner
 EXPOSE 8080
-CMD ["url_shortner"]
+CMD ["url_shortner"] 
